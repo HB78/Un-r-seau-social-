@@ -40,6 +40,14 @@ const postSchema = new mongoose.Schema(
               type: [String]
           },
           comments: {
+            type: [
+                {
+                    commenterId: String,
+                    commenterName: String,
+                    text: String,
+                    timestamps: Number
+                }
+            ],
             defautl: []
           }
     },
