@@ -1,5 +1,17 @@
 const mongoose = require("mongoose");
 
+const commentSchema = new mongoose.Schema(
+    
+                {
+                    commenterId: String,
+                    commenterName: String,
+                    commenterImage: String,
+                    text: String,
+                    timestamps: Number
+                }
+           
+)
+
 const postSchema = new mongoose.Schema(
     {
         userId: {
@@ -41,12 +53,7 @@ const postSchema = new mongoose.Schema(
           },
           comments: {
             type: [
-                {
-                    commenterId: String,
-                    commenterName: String,
-                    text: String,
-                    timestamps: Number
-                }
+                commentSchema
             ],
             defautl: []
           }

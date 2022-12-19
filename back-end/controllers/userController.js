@@ -17,12 +17,9 @@ exports.register = async (req, res, next) => {
             lastname,
             email,
             password,
-            picturePath,
+            picture,
             friends,
-            location,
-            occupation,
-            viewProfile,
-            impressions
+            job,
         } = req.body
 
          //si le user ne rentre pas de mdp, de nom ou de mail
@@ -56,13 +53,10 @@ exports.register = async (req, res, next) => {
             firstname,
             lastname,
             email,
-            password,
-            picturePath: hash,
+            password: hash,
+            picture,
             friends,
-            location,
-            occupation,
-            viewProfile: Math.floor(Math.random() * 10000),
-            impressions: Math.floor(Math.random() * 10000)
+            job,
         })
         const savedUser = await newUser.save()
         return res.status(201).json(savedUser)

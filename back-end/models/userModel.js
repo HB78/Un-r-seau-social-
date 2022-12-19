@@ -27,36 +27,16 @@ const userSchema = new mongoose.Schema(
             required: true, 
             min: 5,
         },
-        picturePath: {
-            type: String, 
-            default: ""
-        },
         friends: {
             type: Array, 
             default: []
         },
-        role: {
-            type: String
-        },
         job: {
             type: String
         },
-        likes: {
-          type: Number,
-          required: false,
-          default: 0
+        picture: {
+            type: String
         },
-        dislikes: {
-          type: Number,
-          required: false,
-          default: 0
-        },
-        usersLiked: {
-            type: [String]
-        },
-        usersDisliked: {
-            type: [String]
-        }
     },
 
     {timestamps: true}
