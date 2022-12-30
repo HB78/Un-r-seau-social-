@@ -26,7 +26,7 @@ const postSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        descritpion: {
+        description: {
             type: String
         },
         pictureImage: {
@@ -36,27 +36,34 @@ const postSchema = new mongoose.Schema(
             type: String
         },
         likes: {
-            type: Number,
+            type: {
+                type: Number,
+                default: 0
+            },
             required: false,
-            default: 0
           },
-          dislikes: {
-            type: Number,
+        dislikes: {
+            type:{
+                type: Number,
+                default: 0
+            },
             required: false,
-            default: 0
           },
-          usersLiked: {
+        usersLiked: {
               type: [String]
           },
-          usersDisliked: {
+        usersDisliked: {
               type: [String]
           },
-          comments: {
+        comments: {
             type: [
                 commentSchema
             ],
             defautl: []
-          }
+          },
+        date : {type: Date, default: Date.now}
     },
     { timestamps: true }
 );
+
+module.exports = mongoose.model("Publications", postSchema);

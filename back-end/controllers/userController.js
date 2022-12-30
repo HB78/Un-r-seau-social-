@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
-const User = require('../models/userModel')
+const User = require('../models/userModel');
+const ObjectID = require("mongoose").Types.ObjectId;
 
 //regex qui test l'email
 function validateEmail(email) {
@@ -8,6 +9,23 @@ function validateEmail(email) {
     return re.test(email);
 }
 
+//voir liste des utilisateurs
+module.exports.getAllUsers = async (req, res) => {
+  const users = await User.find().select("-password");
+  res.status(200).json(users);
+};
+
+// voir infos d'un utilisateur(profil)
+module.exports.getOneUser = (req, res) => {
+    console.log(req.params);
+    if (!ObjectID.isValid(req.params.id))
+      return res.status(400).json("ID unknow : " + req.params.id);
+  
+    User.findById(req.params.id, (err, docs) => {
+      if (!err) return res.status(200).json(docs);
+      else console.log("ID unknow: " + err);
+    }).select("-password");
+  };
 /*REGISTER USER*/
 
 exports.register = async (req, res, next) => {
@@ -90,3 +108,67 @@ exports.login = async (req, res) => {
         return res.status(500).json(error)
     }
 }
+
+/*SUPRESSION DE COMPTE UTLISATEUR */
+
+module.exports.deleteUser = async (req, res) => {
+    const idParams = req.params.id
+    try {
+        await User.findById(idParams, (err, docs) => {
+            const theUser = docs;
+            if (!theUser) {
+                return res.status(404).json("ce user n'existe pas")
+            }
+            if (req.auth.id != thePost.userId) {
+                return res.status(403).json("Vous n'avez pas le droit de supprimer ce post");
+            }
+
+            //suppression de la publication
+            User.remove(theUser, (err) => {
+                if (!err) return res.status(200).json("utlisateur supprimé avec succès");
+                console.log("Delete publication error : " + err)
+                return res.status(500).json(err);
+            });
+        }).clone()
+    } catch (error) {
+        console.log(error)
+        return res.status(400).json(error);
+    }
+}
+module.exports.updateUser = async (req, res) => {
+    const idParams = req.params.id
+    try {
+        await User.findById(idParams, (err, docs) => {
+            const theUser = docs;
+            if (!theUser) {
+                return res.status(404).json("ce user n'existe pas")
+            }
+            if (req.auth.id != thePost.userId) {
+                return res.status(403).json("Vous n'avez pas le droit de supprimer ce post");
+            }
+        }).clone()
+
+        if(req.file) {
+            const userUpdated = User.findById(idParams)
+            const filename = userUpdated.picture.split("/images")[1];
+            fs.unlink(`images/${filename}`, (err) => {
+                if (err) throw err;
+            });
+        }
+        //Si dans la requete il y a une image on l'envoi dans la BDD
+        const objectPost = req.file ? {
+            ...req.body,
+            pictureImage: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+        } :
+            {...req.body}
+        
+            await postModel.updateOne({ _id: req.params.id }, { ...objectPost, _id: req.params.id }) 
+            .then(() => res.status(200).json({ message: "user mise à jour" }))
+            .catch((error) => res.status(404).json({ error }));
+
+    } catch (error) {
+        console.log(error)
+        return res.status(400).json(error);
+    }
+}
+

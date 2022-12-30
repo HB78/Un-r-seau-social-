@@ -13,6 +13,9 @@ const multer = require("multer");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const path = require("path");
+
+// IMPORTATION ROUTES
+const postsRoutes = require("./routes/postsRoutes")
 const usersRoutes = require("./routes/usersRoutes");
 
 /*CONFIGURATION*/
@@ -53,8 +56,9 @@ app.listen(port, (req, res) => {
 });
 
 //ROUTES
-
 //on utilise les routes users pour login et signup
 app.use("/auth", usersRoutes);
+
+app.use("/publication", postsRoutes)
 
 

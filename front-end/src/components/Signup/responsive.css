@@ -1,0 +1,27 @@
+@media (min-width:320px) and (max-width:767px) {
+    .container_main {
+        width: 90%;
+        height: 80%;
+    }
+}
+/*tablette*/
+@media (min-width:768px) and (max-width:1200px) {
+    .container_main {
+        width: 90%;
+        height: 93%;
+    }
+}
+@media (min-width:1000px) and (max-width:1200px) {
+
+}
+/*ECRAN TV */
+@media (min-width:1440px) and (max-width:1600px) {
+     
+  }
+  @media (min-width:1601px) and (max-width:1701px) {
+      
+  }
+/*ECRAN 4K */
+@media (min-width:1702px) and (max-width:3000px) {
+
+}
