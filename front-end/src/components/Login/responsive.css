@@ -1,0 +1,68 @@
+@media (min-width:280px) and (max-width:767px) {
+    .container__form__box {
+        width: 90%;
+        height: 65%;
+    }
+}
+/*tablette*/
+@media (min-width:768px) and (max-width:1200px) {
+    .container__form__box {
+        width: 90%;
+        height: 55%;
+        max-height: 98%;
+    }
+}
+@media (min-width:1000px) and (max-width:1200px) {
+    .container__form__box {
+        width: 90%;
+        height: 93%;
+        max-height: 98%;
+    }
+}
+/*ECRAN TV */
+@media (min-width:1440px) and (max-width:1600px) {
+    .container__form__box {
+        width: 70%;
+        height: 65%;
+        max-height: 98%;
+    }
+    .input_box span {
+        font-size: 1.3rem;
+    }
+  }
+  @media (min-width:1601px) and (max-width:1701px) {
+    .container__form__box {
+        width: 70%;
+        height: 65%;
+        max-height: 98%;
+    }
+    .input_box_ span {
+        font-size: 1.6rem;
+    }
+  }
+/*ECRAN 4K */
+@media (min-width:1702px) and (max-width:3000px) {
+    .input_box input {
+        padding: 70px 10px 10px;
+        font-size: 4rem;
+        border-radius: 1rem;
+    }
+    .container__form__box {
+        width: 75%;
+        height: 70%;
+        max-height: 98%;
+    }
+    .input_box span {
+        font-size: 3rem !important;
+    }
+    .form h2 {
+        font-size: 3rem;
+    }
+    .link a {
+        font-size: 2.5rem !important;
+    }
+    input[type="submit"] {
+        margin: auto;
+        width: 100%;
+    }
+}

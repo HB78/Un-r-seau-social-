@@ -114,6 +114,11 @@ input[type="submit"] {
   background: #45f3ff;
   cursor: pointer;
   font-weight: 600;
+  transition: 500ms;
+}
+input[type="submit"]:hover {
+  transition: 500ms;
+  transform: scale(0.98);
 }
 @keyframes animate {
   0% {

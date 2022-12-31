@@ -1,5 +1,6 @@
 import React from 'react'
 import "./login.css";
+import "./responsive.css";
 import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
@@ -11,14 +12,14 @@ function Login() {
         <form action="" className='form'>
           <h2>Connectez-vous</h2>
           <div className='input_box'>
+            <small></small>
             <input type="email" name="nom" id="firstname" required="required"/>
             <span>Email</span>
-            <i></i>
           </div>
           <div className='input_box'>
+            <small></small>
             <input type="password" name="nom" id="password" required="required"/>
-            <span>Mot de passe</span>
-            <i></i>
+            <span></span>
           </div>
           <div className='link'>
             <Link to ="/signup">Pas encore inscrit ?</Link>

@@ -1,6 +1,6 @@
-@media (min-width:320px) and (max-width:767px) {
+@media (min-width:280px) and (max-width:767px) {
     .container_main {
-        width: 90%;
+        width: 95%;
         height: 80%;
     }
 }
@@ -8,20 +8,68 @@
 @media (min-width:768px) and (max-width:1200px) {
     .container_main {
         width: 90%;
-        height: 94%;
+        height: 85%;
+        max-height: 98%;
     }
 }
 @media (min-width:1000px) and (max-width:1200px) {
-
+    .container_main {
+        width: 90%;
+        height: 93%;
+        max-height: 98%;
+    }
 }
 /*ECRAN TV */
 @media (min-width:1440px) and (max-width:1600px) {
-     
+    .container_main {
+        width: 70%;
+        height: 65%;
+        max-height: 98%;
+    }
+    .input_box_label label {
+        font-size: 1.3rem;
+    }
+    input[type="submit"] {
+        font-size: 1.4rem;
+    }
   }
   @media (min-width:1601px) and (max-width:1701px) {
-      
+    .container_main {
+        width: 70%;
+        height: 65%;
+        max-height: 98%;
+    }
+    .input_box_label label {
+        font-size: 1.6rem;
+    }
+    .link a {
+        font-size: 1.3rem !important;
+    }
+    input[type="submit"] {
+        font-size: 1.5rem;
+    }
   }
 /*ECRAN 4K */
 @media (min-width:1702px) and (max-width:3000px) {
-
+    .container_main {
+        width: 75%;
+        height: 70%;
+        max-height: 98%;
+    }
+    .input_box_label label {
+        font-size: 2rem;
+    }
+    .input_box_label label input {
+        padding: 40px 5px 5px;
+        font-size: 3.8rem;
+    }
+    .link a {
+        font-size: 1.6rem !important;
+    }
+    input[type="submit"] {
+        font-size: 2rem;
+    }
+    .h2_form {
+        font-size: 3rem;
+    }
 }
