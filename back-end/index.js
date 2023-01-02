@@ -57,7 +57,7 @@ app.listen(port, (req, res) => {
 
 //ROUTES
 //on utilise les routes users pour login et signup
-app.use("/auth", usersRoutes);
+app.use("/users", usersRoutes);
 
 app.use("/publication", postsRoutes)
 

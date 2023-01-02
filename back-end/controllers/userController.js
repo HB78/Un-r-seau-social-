@@ -8,7 +8,10 @@ function validateEmail(email) {
     var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 }
-
+function validateName(name) {
+    let regex = new RegExp("[a-zA-Z]")
+    return regex.test(name);
+}
 //voir liste des utilisateurs
 module.exports.getAllUsers = async (req, res) => {
   const users = await User.find().select("-password");
@@ -28,6 +31,17 @@ module.exports.getOneUser = (req, res) => {
   };
 /*REGISTER USER*/
 
+exports.findEmail = async (req, res, next) => {
+        let mail = req.body.email
+        //on vérifie si le mail entré par l'utilisateur existe déjà
+       await User.findOne({email: mail}, (err, docs) => {
+            console.log("log 4", docs)
+            console.log("TEST", err)
+            if (docs) {
+                return res.status(400).json("Ce compte existe déjà")
+            }
+        }).clone()
+}
 exports.register = async (req, res, next) => {
     try {
         const {
@@ -60,7 +74,7 @@ exports.register = async (req, res, next) => {
             return;
         }
          //si le user n'entre pas de nom validen (longueur du nom)
-         if (req.body.firstname.length && req.body.lastname > 25 || req.body.firstname.length && req.body.lastname < 2) {
+         if (req.body.firstname.length && req.body.lastname.length > 25 || req.body.firstname.length && req.body.lastname.length < 2) {
             res.status(400).send("La taille du nom doit etre comprise entre 2 et 25 caractères");
             return;
         }
@@ -79,6 +93,7 @@ exports.register = async (req, res, next) => {
         const savedUser = await newUser.save()
         return res.status(201).json(savedUser)
     } catch (error) {
+        console.log('--> error:', error)
         return res.status(500).json(error)
     }
 }
